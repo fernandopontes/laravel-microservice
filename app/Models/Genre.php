@@ -17,4 +17,8 @@ class Genre extends Model
 		'is_active' => 'boolean'
 	];
 	public $incrementing = false;
+
+	public function getRouteKeyName() {
+		return 'id';
+	}
 }

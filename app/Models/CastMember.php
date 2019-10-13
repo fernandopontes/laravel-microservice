@@ -6,19 +6,14 @@ use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class CastMember extends Model
 {
 	use SoftDeletes, Uuid;
 
-    protected $fillable = ['name', 'description', 'is_active'];
-    protected $dates = ['deleted_at'];
-	protected $casts = [
-		'id' => 'string',
-		'is_active' => 'boolean'
-	];
-	public $incrementing = false;
+	const TYPE_DIRECTOR = 1;
+	const TYPE_ACTOR = 2;
 
-	public function getRouteKeyName() {
-		return 'id';
-	}
+    protected $fillable = ['name', 'type'];
+    protected $dates = ['deleted_at'];
+	public $incrementing = false;
 }

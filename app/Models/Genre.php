@@ -21,4 +21,9 @@ class Genre extends Model
 	public function getRouteKeyName() {
 		return 'id';
 	}
+
+	public function categories()
+	{
+		return $this->belongsToMany(Video::class);
+	}
 }

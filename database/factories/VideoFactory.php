@@ -1,7 +1,8 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\User;
+
+use App\Models\Video;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,12 +17,22 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define( Video::class, function (Faker $faker) {
+
+	$rating = Video::RATING_LIST[array_rand(Video::RATING_LIST)];
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'title' => $faker->sentence(3),
+        'description' => $faker->sentence(10),
+        'year_launched' => rand(1895, 2020),
+        'opened' => rand(0, 1),
+        'rating' => $rating,
+        'duration' => rand(1, 30),
     ];
 });
+
+/*'thumb_file' => null,
+'banner_file' => null,
+'trailer_file' => null,
+'video_file' => null,
+'published' => rand(0, 1),*/

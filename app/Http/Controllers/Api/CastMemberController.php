@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\CastMemberResource;
 use App\Models\CastMember;
 
 class CastMemberController extends BasicCrudController
@@ -34,4 +35,14 @@ class CastMemberController extends BasicCrudController
 	{
 		return $this->rules;
 	}
+
+	protected function resource()
+    {
+        return CastMemberResource::class;
+    }
+
+    protected function resourceCollection()
+    {
+        return $this->resource();
+    }
 }
